@@ -14,17 +14,24 @@ This project implements the backend for the Amazon Multilogin Management app usi
    ```bash
    npm install
    ```
-2. Configure the database connection in `.env`:
-   ```
-   DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/multilogin"
-   ```
-3. Run Prisma migrations and generate the client:
+2. Copy the example environment file and start the services:
    ```bash
-   npx prisma migrate dev --name init
-   npx prisma generate
+   cp .env.example .env
+   docker compose up -d
    ```
-4. Start the backend server:
+3. Create the database schema and generate the Prisma client:
    ```bash
-   npm start
+   npm run migrate
    ```
-   The server runs on port `3001` by default.
+  Optional seed data:
+   ```bash
+   npm run seed
+   ```
+4. The API will be available on `http://localhost:3000`.
+
+### Environment variables
+
+```
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/multilogin?schema=public
+PORT=3000
+```
