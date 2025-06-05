@@ -1,17 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-// In-memory storage for now
-const accounts = [];
+const { listAccounts, createAccount, getAccount } = require('../controllers/accounts');
 
-router.get('/', (req, res) => {
-  res.json(accounts);
-});
-
-router.post('/', (req, res) => {
-  const account = { id: accounts.length + 1, ...req.body };
-  accounts.push(account);
-  res.status(201).json(account);
-});
+router.get('/', listAccounts);
+router.post('/', createAccount);
+router.get('/:id', getAccount);
 
 module.exports = router;

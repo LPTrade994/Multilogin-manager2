@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id          String        @id @default(uuid())
+  name        String
+  notes       String?
+  createdAt   DateTime      @default(now())
+  transactions Transaction[]
+}
+
+model Transaction {
+  id           String     @id @default(uuid())
+  account      Account    @relation(fields: [accountId], references: [id])
+  accountId    String
+  date         DateTime
+  codeOrOrderId String
+  value        Float
+  country      Country
+  type         TxType
+  createdAt    DateTime   @default(now())
+}
+
+enum Country {
+  IT
+  DE
+  FR
+  ES
+  JP
+  US
+}
+
+enum TxType {
+  GiftCardAdded
+  OrderPlaced
+  GiftCardSuspended
+}
