@@ -21,7 +21,9 @@ SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 SUPABASE_DB_URL = os.getenv("SUPABASE_DB_URL")
 
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+supabase: Optional[Client] = None
+if SUPABASE_URL and SUPABASE_KEY:
+    supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 engine: AsyncEngine = create_async_engine(SUPABASE_DB_URL, future=True)
 SessionMaker = async_sessionmaker(engine, expire_on_commit=False)
