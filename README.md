@@ -5,7 +5,7 @@ This project implements the backend for the Amazon Multilogin Management app usi
 ## Structure
 
 - `backend/` – Express API server with account and transaction routes.
-- `frontend/` – Placeholder static page (to be replaced with a React app).
+- `frontend/` – React app (Vite) with dashboard and reports.
 - `prisma/` – Prisma schema and migrations.
 
 ## Quick Start
@@ -37,6 +37,17 @@ This project implements the backend for the Amazon Multilogin Management app usi
    ```
 
 The API will be available on `http://localhost:3000`.
+
+### Frontend
+1. Enter the `frontend` folder and install its dependencies:
+   ```bash
+   cd frontend && npm install
+   ```
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+   This will serve the React UI on `http://localhost:5173`.
 
 ### Environment variables
 

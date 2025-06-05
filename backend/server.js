@@ -1,8 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const accountsRouter = require('./routes/accounts');
-const transactionsRouter = require('./routes/transactions');
+const router = require('./routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,8 +13,7 @@ app.get('/', (req, res) => {
   res.send('API running');
 });
 
-app.use('/accounts', accountsRouter);
-app.use('/transactions', transactionsRouter);
+app.use(router);
 
 app.listen(PORT, () => {
   const provider = process.env.DB_PROVIDER || (process.env.DATABASE_URL && process.env.DATABASE_URL.startsWith('file:') ? 'sqlite' : 'postgresql');
