@@ -4,6 +4,7 @@
   "description": "Amazon Multilogin Management app",
   "main": "backend/server.js",
   "scripts": {
+    "dev:lite": "cross-env DB_PROVIDER=sqlite DATABASE_URL=file:./dev.db prisma migrate dev --name init && nodemon backend/server.js",
     "dev": "nodemon backend/server.js",
     "migrate": "prisma migrate dev --name init",
     "build": "echo \"no build step yet\"",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "prisma": "^6.9.0",
     "nodemon": "^3.0.2",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "cross-env": "^7.0.3"
   }
 }

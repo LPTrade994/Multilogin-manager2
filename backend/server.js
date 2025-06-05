@@ -19,4 +19,5 @@ app.use('/transactions', transactionsRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
+  console.log(`Connected via Prisma – provider: ${process.env.DB_PROVIDER}`);
 });
