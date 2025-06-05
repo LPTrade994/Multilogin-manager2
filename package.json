@@ -1,0 +1,16 @@
+{
+  "name": "multilogin-manager2",
+  "version": "1.0.0",
+  "description": "Amazon Multilogin Management app",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
