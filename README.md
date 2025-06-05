@@ -20,26 +20,18 @@ This project implements the backend for the Amazon Multilogin Management app usi
    ```bash
    cp .env.example .env
    ```
-2. Ensure Docker or a Postgres server is running, then start the stack:
-   ```bash
-   docker compose up -d
-   ```
-3. Run the migrations:
-   ```bash
-   npm run migrate
-   ```
-4. Launch the server in development mode:
+2. Ensure Docker or a Postgres server is running, then run:
    ```bash
    npm run dev
    ```
+   This will deploy migrations automatically.
 
 ### Opzione B – Dev-lite (SQLite embedded)
 1. Copy the example environment file:
    ```bash
    cp .env.example .env
    ```
-2. Uncomment the SQLite lines in `.env` or rely on the script to set them.
-3. Start in lite mode (creates `dev.db` and runs migrations automatically):
+2. Start in lite mode (creates `dev.db` and runs migrations automatically):
    ```bash
    npm run dev:lite
    ```
@@ -49,9 +41,7 @@ The API will be available on `http://localhost:3000`.
 ### Environment variables
 
 ```
-DB_PROVIDER=postgresql
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/multilogin?schema=public
-# DB_PROVIDER=sqlite
 # DATABASE_URL=file:./dev.db
 PORT=3000
 ```

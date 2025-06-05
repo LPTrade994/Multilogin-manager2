@@ -4,9 +4,11 @@
   "description": "Amazon Multilogin Management app",
   "main": "backend/server.js",
   "scripts": {
-    "dev:lite": "cross-env DB_PROVIDER=sqlite DATABASE_URL=file:./dev.db prisma migrate dev --name init && nodemon backend/server.js",
-    "dev": "nodemon backend/server.js",
-    "migrate": "prisma migrate dev --name init",
+    "dev:lite": "cross-env DATABASE_URL=file:./dev.db sh -c \"prisma migrate dev --schema=prisma/schema.sqlite.prisma --name init && prisma generate --schema=prisma/schema.sqlite.prisma && nodemon backend/server.js\"",
+    "migrate:lite": "cross-env DATABASE_URL=file:./dev.db prisma migrate dev --schema=prisma/schema.sqlite.prisma --name init",
+
+    "dev": "cross-env DATABASE_URL=postgresql://postgres:postgres@localhost:5432/multilogin?schema=public sh -c \"prisma migrate deploy --schema=prisma/schema.postgres.prisma && prisma generate --schema=prisma/schema.postgres.prisma && nodemon backend/server.js\"",
+    "migrate": "prisma migrate deploy --schema=prisma/schema.postgres.prisma",
     "build": "echo \"no build step yet\"",
     "start": "node backend/server.js",
     "test": "echo \"\u2713  no tests yet\"",

@@ -18,6 +18,6 @@ app.use('/accounts', accountsRouter);
 app.use('/transactions', transactionsRouter);
 
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-  console.log(`Connected via Prisma – provider: ${process.env.DB_PROVIDER}`);
+  const provider = process.env.DB_PROVIDER || (process.env.DATABASE_URL && process.env.DATABASE_URL.startsWith('file:') ? 'sqlite' : 'postgresql');
+  console.log(`HTTP server listening on ${PORT}, provider: ${provider}`);
 });
